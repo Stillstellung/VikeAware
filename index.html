@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>VikeAware</title>
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      function getServerData() {
+        $.ajax('/status').done(function(data) {
+          $('#server-status').text(data.serverStatus);
+          if (data.onlinePlayers.length > 0) {
+            $('#online-players').text(data.onlinePlayers);
+          } else {
+            $('#online-players').text('No Vikes are Vike-ing :(');
+          }
+          $('#session-deadliness-index').text(data.deathCount);
+          $('#average-save-time').text(`${data.saveTimeAverage}`);
+        });
+      }
+      $(function() {
+        getServerData();
+        setInterval(getServerData, 10000);
+      });
+    </script>
+  </head>
+  <body>
+    <div class="mdl-grid">
+      <div class="mdl-cell mdl-cell--4-col">
+        <div class="mdl-card mdl-shadow--2dp" style="height: 100%;">
+          <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">Server Status</h2>
+          </div>
+          <div class="mdl-card__supporting-text">
+            <p id="server-status"></p>
+          </div>
+        </div>
+      </div>
+      <div class="mdl-cell mdl-cell--4-col">
+        <div class="mdl-card mdl-shadow--2dp" style="height: 100%;">
+          <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">Online Players</h2>
+          </div>
+          <div class="mdl-card__supporting-text">
+            <p id="online-players"></p>
+          </div>
+        </div>
+      </div>
+      <div class="mdl-cell mdl-cell--4-col">
+        <div class="mdl-card mdl-shadow--2dp" style="height: 100%;">
+          <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">Session Deadliness Index</h2>
+          </div>
+          <div class="mdl-card__supporting-text">
+            <p id="session-deadliness-index"></p>
+          </div>
+        </div>
+      </div>
+      <div class="mdl-cell mdl-cell--4-col">
+        <div class="mdl-card mdl-shadow--2dp" style="height: 100%;">
+          <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">Average World Save Time</h2>
+          </div>
+          <div class="mdl-card__supporting-text">
+            <p id="average-save-time"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
