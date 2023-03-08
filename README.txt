@@ -15,8 +15,7 @@ Once you have the Vikeaware tool in its own directory, you will need to make sur
 and then run `npm install` in the directory.
 
 (2)
-You will then need to edit server.js and change the path to your log file in the two places: `const logPath` and 
-`const logFilePath`.
+You will then need to edit config.js and change the path to your log file
 
 (3) 
 Change the name of your server or customize the tiles or whatever else you want to do in the HTML
