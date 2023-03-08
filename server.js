@@ -3,19 +3,16 @@ const express = require('express');
 const app = express();
 
 const players = require('./players.json');
-
-const logPath = '/path/to/valheim_server.log';
+const { logPath } = require('./config'); // read logPath from the configuration file
 
 function getServerStatus() {
-  const logFilePath = '/path/to/valheim_server.log';
-  const log = fs.readFileSync(logFilePath, 'utf-8');
+  const log = fs.readFileSync(logPath, 'utf-8');
   if (log.includes('Shuting down')) {
     return 'Offline';
   } else {
     return 'Online';
   }
 }
-
 
 function getOnlinePlayers() {
   const log = fs.readFileSync(logPath, 'utf8');
