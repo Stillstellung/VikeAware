@@ -57,7 +57,8 @@ Player death count table (sums)
 Add event log w/ datetime stamps (raids etc).
 __________________________________________________________________________________________________________________________________________
 License and Contributing: 
-Contribute away. I'll see it eventually. Curious to see how others might improve this thing. 
+Contribute away. I'll see it eventually, but please don't expect rapid response.
+Curious to see how others might improve this thing. 
 Full GPL text is found in the file LICENSE
 
     VikeAware: very simple Valheim Server status page
